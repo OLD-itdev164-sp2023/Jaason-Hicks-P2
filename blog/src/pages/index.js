@@ -18,20 +18,17 @@ grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <Seo title="Home"/>
+    <Seo name="Home"/>
     <Grid>
       {
-        data.allContentfulBlogPost.edges.map(edge => (
+        data.allContentfulItemSale.edges.map(edge => (
           <Card width={256} p={3} key={edge.node.id}>
             <Link to={edge.node.slug}>
               <GatsbyImage
-                image={edge.node.heroImage.gatsbyImageData}
+                image={edge.node.heroImage.gatsbyImage}
               />
             </Link>
-            <Heading>{edge.node.title}</Heading>
-            <div>
-              {edge.node.body.childMarkdownRemark.excerpt}
-            </div>
+            <Heading>{edge.node.name}</Heading>
           </Card>
         ))
       }
@@ -44,22 +41,21 @@ const IndexPage = ({ data }) => (
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="Home" />
+export const Head = () => <Seo name="Home" />
 
 export default IndexPage
 
 export const query = graphql`
 {
-  allContentfulBlogPost
+  allContentfulItemSale
   {
     edges
     {
       node
       {
-        id
-        title
+        name
         slug
-        body
+        description
         {
           childMarkdownRemark
           {
@@ -68,7 +64,7 @@ export const query = graphql`
         }
         heroImage
         {
-          gatsbyImageData
+          gatsbyImage
           (
             layout: CONSTRAINED
             placeholder: BLURRED

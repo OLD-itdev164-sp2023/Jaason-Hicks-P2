@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     graphql(`
     {
-      allContentfulBlogPost
+      allContentfulItemSale
       {
         edges
         {
@@ -22,7 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
       {
         reject(result.errors)
       }
-      result.data.allContentfulBlogPost.edges.forEach((edge) => {
+      result.data.allContentfulItemSale.edges.forEach((edge) => {
         createPage({
           path: edge.node.slug,
           component: require.resolve("./src/templates/blog-post.js"),

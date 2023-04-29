@@ -10,7 +10,7 @@ import { propTypes } from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 
-import { Gray } from "./themes/Gray"
+import { Blue } from "./themes/Blue"
 import {Header} from "./Header"
 import "./layout.css"
 import { Main } from './Main'
@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <ThemeProvider theme={Gray}>
+    <ThemeProvider theme={Blue}>
       <Header siteTitle={data.site.siteMetadata.title || `Title`} />
       <Content>
         <Main m={20}>{children}</Main>
@@ -44,9 +44,7 @@ const Layout = ({ children }) => {
             fontSize: `var(--font-sm)`,
           }}
         >
-          © {new Date().getFullYear()} &middot; Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
+          © {new Date().getFullYear()} &middot; <p1>A random store</p1>
         </Footer>
       </Content>
     </ThemeProvider>
