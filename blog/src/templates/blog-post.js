@@ -3,44 +3,47 @@ import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Layout from '../components/layout';
 import { H1 } from '../components/Heading';
+import { BuyButton } from '../components/Button'
 
-const BlogPost = ({ data }) => {
-    const { title, body, heroImage } = data.contentfulBlogPost;
+const SaleItem = ({ data }) => {
+    const { name, description, heroImage, price } = data.contentfulItemSale;
 
     return(
         <Layout>
             <GatsbyImage
               image={heroImage.gatsbyImageData}
             />
-            <H1>{title}</H1>
-            <div dangerouslySetInnerHTML={{__html: body.childMarkdownRemark.html}}></div>
+            <H1>{name} ${price}</H1>
+            <BuyButton variant="primary" />
+            <div dangerouslySetInnerHTML={{__html: description.childMarkdownRemark.html}}></div>
         </Layout>
     )
 }
 
-export default BlogPost;
+export default SaleItem;
 
 export const pageQuery = graphql`
-query blogPostQuery($slug: String!) 
+query itemSaleQuery($slug: String!)
 {
-  contentfulBlogPost(slug: {eq: $slug})	
+  contentfulItemSale(slug: {eq: $slug}) 
   {
-    title
-    slug 
-    body
+    name
+    slug
+    description
+    
     {
-      childMarkdownRemark
+      childMarkdownRemark 
       {
         html
       }
     }
+    price
     heroImage 
     {
       gatsbyImageData(
-        layout: CONSTRAINED
-        placeholder: BLURRED
-        width: 960
-      )
+        layout: CONSTRAINED, 
+        placeholder: BLURRED, 
+        width: 960)
     }
   }
 }
