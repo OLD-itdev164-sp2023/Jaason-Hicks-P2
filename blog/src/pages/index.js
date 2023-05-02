@@ -18,11 +18,10 @@ grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <Seo name="Home"/>
     <Grid>
       {
         data.allContentfulItemSale.edges.map(edge => (
-          <Card width={256} p={3} key={edge.node.id}>
+          <Card width={300} p={3} key={edge.node.id}>
             <Link to={edge.node.slug}>
               <GatsbyImage
                 image={edge.node.heroImage.gatsbyImage}
@@ -41,7 +40,7 @@ const IndexPage = ({ data }) => (
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo name="Home" />
+export const Head = () => <Seo title="Home" />
 
 export default IndexPage
 

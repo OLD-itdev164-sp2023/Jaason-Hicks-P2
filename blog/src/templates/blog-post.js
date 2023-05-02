@@ -6,7 +6,7 @@ import { H1 } from '../components/Heading';
 import { BuyButton } from '../components/Button'
 
 const SaleItem = ({ data }) => {
-    const { name, description, heroImage, price } = data.contentfulItemSale;
+    const { name, description, heroImage, price, saleDate } = data.contentfulItemSale;
 
     return(
         <Layout>
@@ -16,6 +16,7 @@ const SaleItem = ({ data }) => {
             <H1>{name} ${price}</H1>
             <BuyButton variant="primary" />
             <div dangerouslySetInnerHTML={{__html: description.childMarkdownRemark.html}}></div>
+            <p3>sale date {saleDate}</p3> 
         </Layout>
     )
 }
@@ -30,7 +31,6 @@ query itemSaleQuery($slug: String!)
     name
     slug
     description
-    
     {
       childMarkdownRemark 
       {
@@ -38,6 +38,7 @@ query itemSaleQuery($slug: String!)
       }
     }
     price
+    saleDate
     heroImage 
     {
       gatsbyImageData(

@@ -8,13 +8,13 @@ const About = ({data}) =>{
     const { name, company } = data.site.siteMetadata.contact;
     return(
         <Layout>
-            <Seo title="Home" />
+            <Seo title="About" />
             <h1>About Us</h1>
             <p>{`${company}was started by ${name} in 2023.`}</p>
             <p>{`At ${company} we sell everything we can get our hands on!`}</p>
             <div style={{ maxWidth: `300px` , marginBottom: `1.45rem`}}>
                 <StaticImage
-                    src="../images/gatsby-icon.png"
+                    src="../images/Random.jpg"
                     width={300}
                     quality={95}
                     formats={["auto","webp","avif"]}

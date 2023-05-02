@@ -4,15 +4,15 @@ require('dotenv').config
 })
 module.exports = {
   siteMetadata: {
-    title: `The Great Gatsby`,
+    title:`The Curiosity of Randomness`,
     description: `ITDEV-164-600`,
     author: `Jason Hicks`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
     contact: 
     {
-      name: `Jason Hicks`,
-      company: `Queston Mark Entertainment`,
-      address: `At The Corner Of Nowhere And Everyhwere`
+      name: `Jason Hicks `,
+      company: `Lack of Pattern or Predictability `,
+      address: `At The Corner Of Nowhere And Everyhwere `
     }
   },
   plugins: [
